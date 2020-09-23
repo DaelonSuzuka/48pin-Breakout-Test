@@ -1,5 +1,5 @@
 name: Project-Template
-processor: 18F27K42
+processor: 18F57K42
 programmer: Pickit4
 src_dir: src
 build_dir: build

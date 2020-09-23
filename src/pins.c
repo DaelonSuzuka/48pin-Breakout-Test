@@ -8,18 +8,14 @@
 ]]] */
 
 // GPIO read functions
-bool read_BUTTON_ONE_PIN(void) { return PORTAbits.RA0; }
-bool read_BUTTON_TWO_PIN(void) { return PORTAbits.RA1; }
+// none
 
 // Button stuff
-// array of pointers to button reading functions
-button_function_t buttonFunctions[NUMBER_OF_BUTTONS] = {
-    read_BUTTON_ONE_PIN, //
-    read_BUTTON_TWO_PIN, //
-};
+// none
 
 // GPIO write functions
-// none
+void set_LED_ONE_PIN(bool value) { LATFbits.LATF4 = value; }
+void set_LED_TWO_PIN(bool value) { LATFbits.LATF5 = value; }
 
 // [[[end]]]
 
@@ -30,18 +26,16 @@ button_function_t buttonFunctions[NUMBER_OF_BUTTONS] = {
 ]]] */
 
 void pins_init(void) {
-    // BUTTON_ONE_PIN
-    TRISAbits.TRISA0 = 1;
-    WPUAbits.WPUA0 = 1;
+    // LED_ONE_PIN
+    TRISFbits.TRISF4 = 0;
 
-    // BUTTON_TWO_PIN
-    TRISAbits.TRISA1 = 1;
-    WPUAbits.WPUA1 = 1;
+    // LED_TWO_PIN
+    TRISFbits.TRISF5 = 0;
 
     // DEBUG_TX_PIN
-    TRISBbits.TRISB0 = 0;
+    TRISFbits.TRISF6 = 0;
 
     // DEBUG_RX_PIN
-    TRISBbits.TRISB1 = 1;
+    TRISFbits.TRISF7 = 1;
 }
 // [[[end]]]

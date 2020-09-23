@@ -11,28 +11,18 @@
 ]]] */
 
 // GPIO read functions
-extern bool read_BUTTON_ONE_PIN(void);
-extern bool read_BUTTON_TWO_PIN(void);
-
-// Button stuff
-#define NUMBER_OF_BUTTONS 2
-
-// array of pointers to button reading functions
-typedef bool (*button_function_t)(void);
-extern button_function_t buttonFunctions[NUMBER_OF_BUTTONS];
-
-// enum of button names
-enum {
-    ONE,
-    TWO,
-} button_names;
-
-// GPIO write functions
 // none
 
+// Button stuff
+// none
+
+// GPIO write functions
+extern void set_LED_ONE_PIN(bool value);
+extern void set_LED_TWO_PIN(bool value);
+
 // PPS initialization macros
-#define PPS_DEBUG_TX_PIN PPS_OUTPUT(B, 0)
-#define PPS_DEBUG_RX_PIN PPS_INPUT(B, 1)
+#define PPS_DEBUG_TX_PIN PPS_OUTPUT(F, 6)
+#define PPS_DEBUG_RX_PIN PPS_INPUT(F, 7)
 
 // ADC Channel Select macros
 // none
