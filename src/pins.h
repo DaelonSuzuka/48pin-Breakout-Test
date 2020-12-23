@@ -21,6 +21,8 @@ extern void set_LED_ONE_PIN(bool value);
 extern void set_LED_TWO_PIN(bool value);
 
 // PPS initialization macros
+#define PPS_USB_TX_PIN PPS_OUTPUT(C, 6)
+#define PPS_USB_RX_PIN PPS_INPUT(C, 7)
 #define PPS_DEBUG_TX_PIN PPS_OUTPUT(F, 6)
 #define PPS_DEBUG_RX_PIN PPS_INPUT(F, 7)
 

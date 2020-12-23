@@ -1,9 +1,13 @@
-name: Project-Template
-processor: 18F56K42
+name: '48-pin-Breakout-Test'
+hw_version: '0.1'
+sw_version: '0.1'
+processor: 18F57Q43
 programmer: Pickit4
 src_dir: src
 build_dir: build
 obj_dir: obj
 defines:
-- DEVELOPMENT
+  - DEVELOPMENT
+  - SHELL_HISTORY_ENABLED
+  - LOGGING_ENABLED
 linker_flags: []
