@@ -46,7 +46,7 @@ static void system_init(void) {
 
 static void OS_init(void) {
     uart_config_t config = UART_get_config(1);
-    config.baud = _921600;
+    config.baud = _1333333;
     config.txPin = PPS_USB_TX_PIN;
     config.rxPin = PPS_USB_RX_PIN;
     create_uart_buffers(debug, config, 128);
