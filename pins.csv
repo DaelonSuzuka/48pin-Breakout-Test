@@ -27,8 +27,8 @@ C2,
 C3, 
 C4, 
 C5, 
-C6, 
-C7, 
+C6, USB_TX_PIN, output pps
+C7, USB_RX_PIN, input pps
 
 # Port D
 D0, 

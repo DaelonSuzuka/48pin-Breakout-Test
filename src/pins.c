@@ -26,6 +26,12 @@ void set_LED_TWO_PIN(bool value) { LATFbits.LATF5 = value; }
 ]]] */
 
 void pins_init(void) {
+    // USB_TX_PIN
+    TRISCbits.TRISC6 = 0;
+
+    // USB_RX_PIN
+    TRISCbits.TRISC7 = 1;
+
     // LED_ONE_PIN
     TRISFbits.TRISF4 = 0;
 

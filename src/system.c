@@ -1,8 +1,9 @@
 #include "system.h"
 #include "os/buttons.h"
 #include "os/serial_port.h"
+#include "os/shell/shell.h"
 #include "os/stopwatch.h"
-#include "os/system_clock.h"
+#include "os/system_time.h"
 #include "peripherals/device_information.h"
 #include "peripherals/interrupt.h"
 #include "peripherals/oscillator.h"
@@ -12,6 +13,26 @@
 #include "peripherals/timer.h"
 #include "peripherals/uart.h"
 #include "pins.h"
+
+/* ************************************************************************** */
+/*  System information
+
+    Various information about the system, made available at runtime.
+*/
+
+#define xstr(s) str(s)
+#define str(s) #s
+
+// product name
+const char productName[] = xstr(__PRODUCT_NAME__);
+
+// product software version
+const char productVersion[] = xstr(__PRODUCT_VERSION__);
+
+// compilation information
+const uint16_t xc8Version = __XC8_VERSION;
+const char compileDate[] = __DATE__;
+const char compileTime[] = __TIME__;
 
 /* ************************************************************************** */
 
@@ -25,12 +46,15 @@ static void system_init(void) {
 
 static void OS_init(void) {
     uart_config_t config = UART_get_config(1);
-    config.baud = _115200;
-    config.txPin = PPS_DEBUG_TX_PIN;
-    config.rxPin = PPS_DEBUG_RX_PIN;
-    serial_port_init(UART_init(config));
+    config.baud = _1333333;
+    config.txPin = PPS_USB_TX_PIN;
+    config.rxPin = PPS_USB_RX_PIN;
+    create_uart_buffers(debug, config, 128);
+    serial_port_init(&config);
 
-    system_clock_init();
+    shell_init();
+
+    system_time_init();
     stopwatch_init();
 }
 

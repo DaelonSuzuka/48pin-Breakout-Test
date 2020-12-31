@@ -1,5 +1,7 @@
 #include "config.h"
-#include "os/system_clock.h"
+#include "os/serial_port.h"
+#include "os/shell/shell.h"
+#include "os/system_time.h"
 #include "pins.h"
 #include "system.h"
 #include <stdbool.h>
@@ -61,5 +63,7 @@ void main(void) {
     while (1) {
         attempt_led_one_blink();
         attempt_led_two_blink();
+
+        shell_update(getch());
     }
 }
